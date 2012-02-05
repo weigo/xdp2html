@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+    <form-bean name="fileForm" type="org.apache.struts.action.DynaActionForm">
+      <form-property name="file" type="org.apache.struts.upload.FormFile" />
+    </form-bean>
+  </form-beans>
+
+  <global-exceptions />
+  <global-forwards>
+    <forward name="uploadFormular" path="/uploadFormular.do" />
+  </global-forwards>
+
+  <action-mappings>
+    <action attribute="fileForm" name="fileForm" path="/xdp2html" scope="request" type="org.arachna.xdp2html.struts.Xdp2HtmlAction" />
+    <action attribute="fileForm" name="fileForm" path="/uploadFormular" scope="request" type="org.arachna.xdp2html.struts.UploadFormularAction">
+      <forward name="xdp2html" path="/xdp2html.do" />
+      <forward name="uploadFormular" path="/index.jsp" />
+    </action>
+  </action-mappings>
+
+  <message-resources parameter="org.arachna.xdp2html.struts.ApplicationResources" />
+</struts-config>
+
